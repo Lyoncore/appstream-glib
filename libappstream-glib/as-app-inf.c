@@ -151,7 +151,9 @@ as_app_parse_inf_file (AsApp *app,
 	}
 
 	/* convert if required */
+	g_message("1: %s", version);
 	version_parsed = as_utils_version_parse (version);
+	g_message("2: %s", version_parsed);
 
 	/* add the GUID as a provide */
 	provide_guid = as_app_parse_inf_sanitize_guid (guid);
@@ -226,6 +228,7 @@ as_app_parse_inf_file (AsApp *app,
 	/* this is for display only */
 	if (display_version != NULL)
 		as_app_add_metadata (app, "DisplayVersion", display_version);
+		g_message("display: %s", display_version);
 
 	/* add a release with no real description */
 	release = as_release_new ();
