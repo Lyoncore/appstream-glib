@@ -367,6 +367,7 @@ as_store_cab_from_bytes_with_origin (AsStore *store,
 		rel_metainfo = as_app_get_release_default (app_tmp);
 		if (as_release_get_version (rel_inf) != NULL) {
 			g_printerr("metainfo is %s, inf %s", as_release_get_version (rel_metainfo), as_release_get_version (rel_inf));
+			g_printf("debug");
 		}
 		if (as_release_get_version (rel_inf) != NULL &&
 		    as_utils_vercmp (as_release_get_version (rel_inf),
@@ -374,7 +375,7 @@ as_store_cab_from_bytes_with_origin (AsStore *store,
 			g_set_error (error,
 				     AS_STORE_ERROR,
 				     AS_STORE_ERROR_FAILED,
-				     "metainfo version is %s while inf has %s",
+				     "metainfo version is %s while inf hasaa %s",
 				     as_release_get_version (rel_metainfo),
 				     as_release_get_version (rel_inf));
 			return FALSE;
@@ -388,7 +389,7 @@ as_store_cab_from_bytes_with_origin (AsStore *store,
 			g_set_error (error,
 				     AS_STORE_ERROR,
 				     AS_STORE_ERROR_FAILED,
-				     "metainfo filename is %s while inf has %s",
+				     "metainfo filename is %s while inf hasbb %s",
 				     as_checksum_get_filename (csum_metainfo),
 				     as_checksum_get_filename (csum_inf));
 			return FALSE;
