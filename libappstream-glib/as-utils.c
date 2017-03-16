@@ -1590,7 +1590,7 @@ as_utils_version_parse (const gchar *version)
 	/* convert 0x prefixed strings to dotted decimal */
 	if (g_str_has_prefix (version, "0x")) {
 		g_message("a,version=%s",g_strdup(version));
-		version += 2;
+		//version += 2;
 		g_message("b,version=%s",g_strdup(version));
 		base = 16;
 	} else {
@@ -1604,7 +1604,7 @@ as_utils_version_parse (const gchar *version)
 
 	g_message("c,version=%s",g_strdup(version));
 	/* convert */
-	tmp = g_ascii_strtoull (version, &endptr, base);
+	tmp = g_ascii_strtoull (base == 16 ? version+2 : version, &endptr, base);
 	g_message("tmp=%d,version=%s",tmp,g_strdup(version));
 	
 	if (endptr != NULL && endptr[0] != '\0')
