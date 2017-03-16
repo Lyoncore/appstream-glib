@@ -1589,7 +1589,9 @@ as_utils_version_parse (const gchar *version)
 
 	/* convert 0x prefixed strings to dotted decimal */
 	if (g_str_has_prefix (version, "0x")) {
+		g_message("a,version=%s",g_strdup(version));
 		version += 2;
+		g_message("b,version=%s",g_strdup(version));
 		base = 16;
 	} else {
 		/* for non-numeric content, just return the string */
@@ -1600,12 +1602,18 @@ as_utils_version_parse (const gchar *version)
 		base = 10;
 	}
 
+	g_message("c,version=%s",g_strdup(version));
 	/* convert */
 	tmp = g_ascii_strtoull (version, &endptr, base);
+	g_message("tmp=%d,version=%s",tmp,g_strdup(version));
+	
 	if (endptr != NULL && endptr[0] != '\0')
 		return g_strdup (version);
-	if (tmp == 0 || tmp < 0xff)
+	if (tmp == 0 || tmp < 0xff) {
+		g_message("k,version=%s",g_strdup(version));
 		return g_strdup (version);
+	}
+	g_message("z,version=%s",g_strdup(version));
 	return as_utils_version_from_uint32 (tmp, AS_VERSION_PARSE_FLAG_USE_TRIPLET);
 }
 
